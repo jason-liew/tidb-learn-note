@@ -27,6 +27,18 @@ make build
 
 -- 分别切到两者目录，make 即可。
 
+### 启动集群
+```
+./bin/pd-server --name=pd1 --data-dir=pd1 --client-urls="http://127.0.0.1:2379" --peer-urls="http://127.0.0.1:2380"  --initial-cluster="pd1=http://127.0.0.1:2380" --log-file=pd1.log
+```
+```
+./tikv-server --pd-endpoints="127.0.0.1:2379" --addr="127.0.0.1:20160" --data-dir=tikv1 --log-file=tikv1.log
+./tikv-server --pd-endpoints="127.0.0.1:2379" --addr="127.0.0.1:20161" --data-dir=tikv2 --log-file=tikv2.log
+./tikv-server --pd-endpoints="127.0.0.1:2379" --addr="127.0.0.1:20162" --data-dir=tikv3 --log-file=tikv3.log
+```
+```
+./bin/tidb-server --store=tikv --path="127.0.0.1:2379"
+```
 
 ### 修改tidb 使其开始事物的时候打印 Hello Transaction.
 有两个地方可以选择，加一句 print()即可。

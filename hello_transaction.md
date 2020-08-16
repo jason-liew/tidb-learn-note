@@ -1,7 +1,7 @@
 
 操作环境在 centos7 
 
-1. 编译tikv，这个最麻烦耗时先来
+- 编译tikv，这个最麻烦耗时先来
 主要步骤如下：
  ```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh 
@@ -16,18 +16,16 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/.cargo/bin:$CMAKE_HOME/bin
 
 make build
 ```
-  11  git clone  https://github.com.cnpmjs.org/tikv/tikv.git
-   57  git clone https://github.com/pingcap/pd.git
 
-2. 安装golang
+- 安装golang
 ```
  wget https://golang.google.cn/dl/go1.15.linux-amd64.tar.gz
  ```
-3. 编译tidb,pd
-git clone https://github.com/pingcap/pd.git
-git clone https://github.com/pingcap/tidb.git
+- 编译tidb,pd
+-- git clone https://github.com/pingcap/pd.git
+-- git clone https://github.com/pingcap/tidb.git
 
-分别切到两者目录，make 即可。
+-- 分别切到两者目录，make 即可。
 
 
 ### 修改tidb 使其开始事物的时候打印 Hello Transaction.
